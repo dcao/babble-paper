@@ -1,0 +1,159 @@
+\newcommand{\Rule}[4][]{\ensuremath{\inferrule*[lab={\footnotesize{(#2)}},#1]{#3}{#4}}}
+\def\MathparLineskip{\lineskip=0.29cm}
+
+\newcommand{\p}[1]{\ensuremath{(#1)}}
+\newcommand{\sq}[1]{\ensuremath{[#1]}}
+\newcommand{\set}[1]{\ensuremath{\{#1\}}}
+\newcommand{\tuple}[1]{\ensuremath{\langle#1\rangle}}
+\newcommand{\interp}[1]{\ensuremath{\llbracket #1 \rrbracket}}
+\newcommand{\interps}[1]{\ensuremath{\llparenthesis #1 \rrparenthesis}}
+
+\newcommand{\defeq}{\overset{\underset{\textnormal{def}}{}}{=}}
+
+\newcommand{\bbB}{\ensuremath{\mathbb{B}}}
+\newcommand{\bbN}{\ensuremath{\mathbb{N}}}
+\newcommand{\bbZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\bbU}{\ensuremath{\mathbb{U}}}
+\newcommand{\calI}{\ensuremath{\mathcal{I}}}
+\newcommand{\calJ}{\ensuremath{\mathcal{J}}}
+\newcommand{\calT}{\ensuremath{\mathcal{T}}}
+\newcommand{\scrB}{\ensuremath{\mathscr{B}}}
+
+\newcommand{\subst}[3]{\ensuremath{\sq{#1/#2}#3}}
+\newcommand{\sharing}{\ensuremath{\mathrel{\curlyveedownarrow}}}
+\newcommand{\potv}[3]{\ensuremath{\Phi_{#1}\p{#2 : #3}}}
+\newcommand{\potc}[2]{\ensuremath{\Phi_{#1}\p{#2}}}
+\newcommand{\pot}[1]{\ensuremath{\Phi\p{#1}}}
+\newcommand{\condv}[3]{\ensuremath{\Psi_{#1}\p{#2:#3}}}
+\newcommand{\condc}[2]{\ensuremath{\Psi_{#1}\p{#2}}}
+\newcommand{\cond}[1]{\ensuremath{\Psi\p{#1}}}
+\newcommand{\hole}[1]{\ensuremath{\mathring{#1}}}
+\newcommand{\varsof}[1]{\ensuremath{\mathsf{fv}(#1)}}
+\newcommand{\condcpara}[3]{\ensuremath{\Psi_{#1}^{#2}\p{#3}}}
+\newcommand{\fold}[1]{\ensuremath{\mathsf{fold}\p{#1}}}
+
+
+\newcommand{\etriv}{\ensuremath{\mathsf{triv}}}
+\newcommand{\enat}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\ebinop}[3]{\ensuremath{\mathsf{op}_{#1}\p{#2,#3}}}
+\newcommand{\etrue}{\ensuremath{\mathsf{true}}}
+\newcommand{\efalse}{\ensuremath{\mathsf{false}}}
+\newcommand{\econd}[3]{\ensuremath{\mathsf{if}\p{#1,#2,#3}}}
+\newcommand{\elet}[3]{\ensuremath{\mathsf{let}\p{#1,#2.#3}}}
+\newcommand{\enil}{\ensuremath{\mathsf{nil}}}
+\newcommand{\econs}[2]{\ensuremath{\mathsf{cons}\p{#1,#2}}}
+\newcommand{\ematl}[5]{\ensuremath{\mathsf{matl}\p{#1,#2,#3.#4.#5}}}
+\newcommand{\eabs}[2]{\ensuremath{\lambda\p{#1.#2}}}
+\newcommand{\efix}[3]{\ensuremath{\mathsf{fix}\p{#1.#2.#3}}}
+\newcommand{\eapp}[2]{\ensuremath{\mathsf{app}\p{#1,#2}}}
+\newcommand{\eimp}{\ensuremath{\mathsf{impossible}}\xspace}
+\newcommand{\econsumename}{\ensuremath{\mathsf{tick}}\xspace}
+\newcommand{\econsume}[2]{\ensuremath{\econsumename\p{#1,#2}}}
+\newcommand{\ehole}{\ensuremath{\circ}}
+\newcommand{\elets}[2]{\ensuremath{\mathsf{lets}\p{#1.#2}}}
+
+\newcommand{\epair}[2]{\ensuremath{\mathsf{pair}\p{#1,#2}}}
+\newcommand{\ematp}[4]{\ensuremath{\mathsf{matp}\p{#1, #2.#3.#4}}}
+\newcommand{\tprod}[2]{\ensuremath{#1 \times #2}}
+
+\newcommand{\jval}[1]{\ensuremath{#1 \in \mathsf{Val}}}
+\newcommand{\jstep}[4]{\ensuremath{\tuple{#1,#3} \mapsto \tuple{#2,#4}}}
+\newcommand{\jsteps}[4]{\ensuremath{\tuple{#1,#3} \mapsto^* \tuple{#2,#4}}}
+\newcommand{\jstepn}[5][n]{\ensuremath{\tuple{#2,#4} \mapsto^{#1} \tuple{#3,#5}}}
+\newcommand{\jsort}[3]{\ensuremath{#1 \vdash #2 \in #3}}
+\newcommand{\jwftype}[2]{\ensuremath{#1 \vdash #2~\mathsf{type}}}
+\newcommand{\jwfctxt}[1]{\ensuremath{\vdash #1~\mathsf{context}}}
+\newcommand{\jsubty}[3]{\ensuremath{#1 \vdash #2 <: #3}}
+\newcommand{\jsharing}[4]{\ensuremath{#1 \vdash #2 \sharing #3 \mid #4}}
+\newcommand{\jctxsharing}[3]{\ensuremath{\vdash #1 \sharing #2 \mid #3}}
+\newcommand{\jprop}[2]{\ensuremath{#1 \models #2}}
+\newcommand{\jatyping}[3]{\ensuremath{#1 \vdash #2 : #3}}
+\newcommand{\jstyping}[3]{\ensuremath{#1 \vdash #2 \dblcolon #3}}
+\newcommand{\jctxtyping}[3][\cdot]{\ensuremath{#1 \vdash #2 \dblcolon #3}}
+\newcommand{\jkind}[2]{\ensuremath{ #1 \rightsquigarrow #2}}
+
+\newcommand{\jtcheck}[3]{\ensuremath{#1 \vdash #2 \downarrow #3}}
+\newcommand{\jtinfer}[3]{\ensuremath{#1 \vdash #2 \uparrow #3}}
+
+\newcommand{\jtfold}[4]{\ensuremath{#1 \vdash \p{#2\;;\;#3} \triangleright #4}}
+\newcommand{\jtfoldnil}[3]{\ensuremath{#1 \vdash #2 \triangleright^\mathsf{nil} #3}}
+\newcommand{\jtfoldcons}[3]{\ensuremath{#1 \vdash #2 \triangleright^\mathsf{cons} #3}}
+\newcommand{\jtunfoldnil}[3]{\ensuremath{#1 \vdash #2 \triangleleft^\mathsf{nil} #3}}
+\newcommand{\jtunfoldcons}[3]{\ensuremath{#1 \vdash #2 \triangleleft^\mathsf{cons} #3}}
+
+\newcommand{\jfill}[4]{\ensuremath{#1 \vdash #2 \dblcolon #3 \rightsquigarrow #4}}
+\newcommand{\jsynth}[3]{\jfill{#1}{\ehole}{#2}{#3}}
+\newcommand{\jafill}[4]{\ensuremath{#1 \vdash #2 \dblcolon #3 \overset{a}{\rightsquigarrow} #4}}
+\newcommand{\jasynth}[3]{\jafill{#1}{\ehole}{#2}{#3}}
+\newcommand{\jproppara}[3]{\ensuremath{#1 \models_{#3} #2}}
+
+\newcommand{\many}[1]{\overrightarrow{#1}}
+\newcommand{\vbind}[2]{\ensuremath{#1:#2}}
+\newcommand{\gbind}[2]{\ensuremath{#1:#2}}
+\newcommand{\gbinds}[2]{\ensuremath{\many{#1:#2}}}
+\newcommand{\eletann}[4]{\ensuremath{\mathsf{let}\p{#1:#2,#3.#4}}}
+\newcommand{\estrip}[1]{\ensuremath{\lfloor #1 \rfloor}}
+
+
+\newcommand{\tunit}{\ensuremath{\mathsf{unit}}}
+\newcommand{\tbool}{\ensuremath{\mathsf{bool}}}
+\newcommand{\tnat}{\ensuremath{\mathsf{nat}}}
+\newcommand{\tlist}[1]{\ensuremath{L\p{#1}}}
+\newcommand{\tdata}[2]{\ensuremath{D\p{#1}\langle{#2}\rangle}}
+\newcommand{\tinduct}[5][\lhd,\pi]{\ensuremath{\mathsf{ind}_{#1}^{#5}\p{ \many{ #2 {\,:\,} (#3,#4) } }}}
+\newcommand{\tpot}[2]{\ensuremath{{#1}^{#2}}}
+\newcommand{\tsubset}[2]{\ensuremath{\set{ #1 \mid #2 }}}
+\newcommand{\tarrow}[3]{\ensuremath{#1{\,:\,}#2 \rightarrow #3}}
+\newcommand{\tarrowm}[4]{\ensuremath{{#4}\cdot\p{#1{\,:\,}#2 \rightarrow #3}}}
+\newcommand{\trefined}[3]{\tpot{\tsubset{#1}{#2}}{#3}}
+
+
+\newcommand{\sprod}[2]{\ensuremath{#1 \times #2}}
+\newcommand{\sarrow}[2]{\ensuremath{#1 \Rightarrow #2}}
+\newcommand{\rabs}[3]{\ensuremath{\lambda #1{\,:\,}#2.#3}}
+\newcommand{\rpair}[2]{\ensuremath{\p{#1,#2}}}
+\newcommand{\rforall}[3]{\ensuremath{\forall #1{\,:\,}#2.#3}}
+\newcommand{\projl}[1]{\ensuremath{#1.\mathbf{1}}}
+\newcommand{\projr}[1]{\ensuremath{#1.\mathbf{2}}}
+
+
+\newcommand{\bindvar}[2]{\vbind{#1}{#2}}
+\newcommand{\bindghost}[2]{\gbind{#1}{#2}}
+\newcommand{\tself}[2]{\ensuremath{\mathsf{self}\p{#1, #2}}}
+\newcommand{\tcons}[1]{\ensuremath{\mathsf{ty}\p{#1}}}
+
+\newcommand{\texists}[3]{\ensuremath{\exists #1{\,:\,}#2 . #3}}
+\newcommand{\texist}[3]{\ensuremath{\exists \many{#1{\,:\,}#2} . #3}}
+\newcommand{\texistss}[3]{\texist{#1}{#2}{#3}}
+\newcommand{\tforall}[3]{\ensuremath{\forall #1{\,:\,}#2 . #3}}
+\newcommand{\tforalls}[3]{\ensuremath{\forall \many{#1{\,:\,}#2} . #3}}
+
+
+\newcommand{\trefine}[2]{\ensuremath{\mathsf{refine}\p{#1, #2}}}
+\newcommand{\tfun}[1]{\ensuremath{\mathsf{to}\p{#1}}}
+\newcommand{\tscalar}[1]{\ensuremath{#1~\mathsf{scalar}}}
+\newcommand{\tbot}{\ensuremath{\mathsf{?}}}
+\newcommand{\jtransfer}[5]{\ensuremath{#1 \vdash #2,#3 \leftrightarrow #4, #5}}
+
+
+\newcommand{\melems}[1]{\mathsf{elems}~#1}
+
+\newcommand{\sol}{\ensuremath{\mathcal{L}}}
+
+
+\newcommand{\tclist}[1]{\ensuremath{CL\p{#1}}}
+\newcommand{\tilist}[1]{\ensuremath{SL\p{#1}}}
+
+\newcommand{\jwfctxex}[1]{\ensuremath{\vdash_{\exists} #1~\mathsf{context}}}
+\newcommand{\jsubctx}[2]{\ensuremath{#1<:#2}}
+
+\newcommand{\cegissol}{\ensuremath{\mathcal{C}}}
+\newcommand{\cegisex}{\ensuremath{\mathcal{E}}}
+
+\newcommand{\simplify}{\ensuremath{\mathbb{C}}}
+
+\newcommand{\apvec}[1]{\overrightarrow{#1}}
+\newcommand{\db}[1]{\ensuremath{\mathbf{#1}}}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}

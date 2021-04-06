@@ -1,0 +1,492 @@
+%% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
+% \documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For double-blind review submission, w/ CCS and ACM Reference
+%\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true}
+%% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
+%\documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For single-blind review submission, w/ CCS and ACM Reference
+%\documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true}
+%% For final camera-ready submission, w/ required CCS and ACM Reference
+\documentclass[acmsmall,nonacm]{acmart}\settopmatter{}
+
+%% Bibliography style
+\bibliographystyle{ACM-Reference-Format}
+%% Citation style
+%% Note: author/year citations are required for papers published as an
+%% issue of PACMPL.
+\citestyle{acmauthoryear}   %% For author/year citations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Note: Authors migrating a paper from PACMPL format to traditional
+%% SIGPLAN proceedings format must update the '\documentclass' and
+%% topmatter commands above; see 'acmart-sigplanproc-template.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {1.25ex \@plus1ex \@minus.2ex}%
+                                    {-0.5em}%
+                                    {\normalfont\normalsize\bfseries\@adddotafter}}
+\makeatother
+
+%% Some recommended packages.
+\usepackage{booktabs}   %% For formal tables:
+                        %% http://ctan.org/pkg/booktabs
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+                        %% http://ctan.org/pkg/subcaption
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{xspace}
+%\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{amssymb, pifont}
+\usepackage{stmaryrd}
+\usepackage[inference]{semantic}
+\usepackage{nanoml}
+\usepackage{microtype}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{mathpartir}
+\usepackage{thmtools}
+\usepackage{multirow}
+\usepackage[scaled=0.75]{beramono}
+\usepackage{paralist}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\def\sectionautorefname{Sec.}
+\def\subsectionautorefname{Sec.}
+\def\subsubsectionautorefname{Sec.}
+\def\figureautorefname{Fig.}
+\def\tableautorefname{Tab.}
+\def\equationautorefname{Eq.}
+
+
+\input{macros}
+\input{defs}
+
+
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{TODO:\ #1}}}
+
+\newcommand{\custompar}[1]{\parskip 0pt \textbf{\textit{#1}}}
+\newcommand{\Implies}{\Rightarrow}
+\renewcommand{\And}{\wedge}
+\newcommand{\Or}{\vee}
+\newcommand{\Subt}{<:}
+\newcommand{\Consi}{\mathrel{\mathrm{\wedge:}}}
+\newcommand{\HasT}{\;\mathrel{\mathrm{::}}\;}
+\newcommand{\App}[2]{{#1}\ {#2}}
+
+\newcommand{\tk}[1]{\textbf{\textcolor{red}{#1}}}
+
+\newcommand{\env}{\Gamma}
+% \newcommand{\produce}{\;\uparrow\;}
+% \newcommand{\consume}{\;\downarrow\;}
+% \newcommand{\produceB}{\;{\mathrm{\uparrow_b}}\;}
+% \newcommand{\consumeB}{\;{\mathrm{\downarrow_b}}\;}
+% \newcommand{\funT}[4]{{#1}\colon {#2} \xrightarrow{{#4}} {#3}}
+% \newcommand{\before}{\prec}
+% \newcommand{\ttop}{\mathsf{top}}
+% \newcommand{\tbot}{\mathsf{bot}}
+% \newcommand{\dom}{\mathsf{dom}}
+% \newcommand{\fv}{\mathsf{FV}}
+% \newcommand{\pathc}[1]{\mathsf{P}({#1})}
+% \newcommand{\bnd}[2]{\mathsf{B}_{#1}({#2})}
+% \newcommand{\contT}[2]{\T{let}\ {#1}\ \T{in}\ {#2}}
+% \newcommand{\quals}{\mathbb{Q}}
+% \newcommand{\entailsQ}{\vdash_{\quals}}
+% \newcommand{\constraints}{\mathcal{C}}
+% \newcommand{\valuation}[2]{\llbracket{#1}\rrbracket_{#2}}
+% \newcommand{\hole}{\Box}
+
+\newcommand{\etal}{\textit{et al.}\@\xspace}
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
+\newcommand{\wrt}{\textit{wrt.}\@\xspace}
+
+\newcommand{\mtimes}{\cdot}
+\newcommand{\spl}{\mid \mid}
+
+\newcommand{\tname}[1]{\textsc{#1}\xspace}
+\newcommand{\tool}{\tname{LRTChecker}}
+\newcommand{\resyn}{\tname{ReSyn}}
+\newcommand{\raml}{\tname{RaML}}
+\newcommand{\relcost}{\tname{RelCost}}
+\newcommand{\synquid}{\tname{Synquid}}
+\newcommand{\typesys}{$\mathrm{Re}^2$\xspace}
+\newcommand{\typesysa}{$\mathrm{Re}^2_A$\xspace}
+
+\newcommand{\Omit}[1]{}
+\newcommand{\jan}[1]{\textbf{\textcolor{blue}{\ Jan says: #1}}}
+\newcommand{\nadia}[1]{\textbf{\textcolor{purple}{\ #1}}}
+\newcommand{\tristan}[1]{\textbf{\textcolor{orange}{\ #1}}}
+
+% \newcommand{\numMB}{16\xspace}
+\newcommand{\numBench}{12\xspace}
+% \newcommand{\slowdown}{$2.5\times$\xspace}
+% \newcommand{\nincslowdown}{$2\times$\xspace}
+
+\newcommand{\tktype}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\tkptype}[2]{\ensuremath{\mathsf{#1}^{#2}}}
+\newcommand{\tklist}[1]{\ensuremath{\mathsf{List \, #1}}}
+\newcommand{\tkplist}[2]{\ensuremath{\mathsf{List \, #1}^{#2}}}
+\newcommand{\tkaplist}[3]{\ensuremath{\mathsf{List \, #1}^{#2} \, \langle #3 \rangle}}
+\newcommand{\tkapdt}[4]{\ensuremath{\mathsf{#4 \, #1}^{#2} \, \langle #3 \rangle}}
+\newcommand{\tkadt}[3]{\ensuremath{\mathsf{#3 \, #1} \, \langle #2 \rangle}}
+\newcommand{\tksym}[1]{\textcolor{blue}{#1}}
+\newcommand{\tkgray}[1]{\textcolor{lightgray!80!black}{#1}}
+
+\newif\iflong
+%\longtrue
+\longfalse
+
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{-12pt}
+\setlength{\abovedisplayskip}{-10pt}
+\setlength{\belowdisplayskip}{-10pt}
+\setlength{\abovedisplayshortskip}{-10pt}
+\setlength{\belowdisplayshortskip}{-10pt}
+
+\begin{document}
+
+\title{babble: Library learning with e-graphs}
+
+\author{David Cao}
+\affiliation{
+  \institution{University of California, San Diego}
+  \country{USA}
+}
+\email{dmcao@ucsd.edu}
+
+\maketitle
+
+Library learning is a general technique for extracting out common auxiliary functions present across a set of input programs. Because of its generality, library learning has found use across a variety of domains, including in augmented program synthesis \cite{ellis_dreamcoder_nodate} and graphical structure analysis. However, existing library learning solutions require a trade-off between exhaustiveness (being able to find more hidden common auxiliary functions, but at extremely high compute cost) and speed (being able to find trivial common functions quickly, but being unable to find less trivial common subroutines). Our work uses \textit{egg} \cite{willsey_egg_2021}, an efficient implementation of e-graphs in Rust, to create a more efficient library learning approach targeted towards a simple graphical DSL. We evaluate the effectiveness of \textit{babble}, a prototype which implements this approach, and evaluate its effectiveness on a set of simple library learning examples.
+
+\section{Introduction}
+
+When programming, most programmers don't implement their programs as one massive function with every definition inlined; instead, programmers often extract out common functionality as auxiliary functions, allowing for the composition of more complex behavior. \textit{Library learning} is the line of research which seeks to automate this process. Library learning algorithms take a set of programs as input, and synthesizes a set of common auxiliary functions across these programs (as long as the original programs re-expressed in terms of the auxiliary functions) as output. While use cases for this line of research are still emerging, several key use cases have already emerged, particularly in the synthesis domain.
+
+One key use case for library learning is augmenting existing program synthesis techniques with the ability to generate new component functions during the synthesis process. Traditionally, many synthesis systems require the user to provide a set of components as a structural constraint input, with the synthesis algorithm using this set of components in order to generate a solution program. However, library learning allows for synthesis systems to learn new components based on previous synthesis results, without the need for user intervention. DreamCoder \cite{ellis_dreamcoder_nodate}, for instance, utilizes a two-stage synthesis loop: a neural-network-based program synthesis ``wake'' stage, and a library learning ``sleep'' stage, which uses an algorithm based on version-space algebras that learns new auxiliary functions based on complete user-provided programs, along with previously synthesized programs. This two-stage program synthesis process allows DreamCoder to synthesize complex auxiliary functions like map and fold, and use these in future synthesis solutions.
+
+Another key use case of library learning is to uncover some hidden common structure between seemingly disparate programs. This is particularly important for graphical applications: for instance, a work from Wang et al. \cite{wang_learning_2021} (here onwards referred to as the ``smiley paper'') utilizes anti-unification techniques on a simple, specialized graphical DSL in order to compare how programmatic library learning and anti-unification techniques can parallel how human beings recognize abstract structures like smiley faces.
+
+However, existing library learning approaches often require choosing between exhaustiveness and speed. For instance, because of its hybrid ``wake-sleep'' synthesis loop, DreamCoder is capable of discovering highly complex hidden structures between different programs. However, as a tradeoff, it requires a potentially-impractical amount of compute power and time. On the other hand, approaches similar to the smiley paper don't suffer from issues with speed, but with exhaustiveness in their search; in particular, the approach used by the smiley paper only allows for anti-unification on the shape used. The ideal library learning system would be both exhaustive and fast, allowing for a reasonably thorough search of the program space in a reasonable amount of time.
+
+This article presents a new technique for library learning which relies on modifying equivalence graphs---data structures which represent a set of equivalent programs---by progressively rewriting programs as applications to common functions. To limit the scope of the project, our approach focuses on basic library learning between two programs written in the graphics DSL from the smiley paper, in an effort to improve on its anti-unification techniques. Our prototype implementation of this approach, named \textit{babble}, uses \textit{egg} \cite{willsey_egg_2021}, an efficient library for equivalence graphs in Rust, to facilitate performant library learning.
+
+\section{Motivating Example: Recognizing Smileys}
+
+As mentioned earlier, for the sake of this project, we limit our scope to targeting the simple graphics DSL from the smiley paper and improving on its anti-unification capabilities. Presented in figure \ref{fig:1} is an example of such a problem.
+
+\begin{figure}[h]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=.175\textwidth]
+(let cyanFace @(set
+  (move -2 2 (scale 0.1 line))
+  (move 2 2 (scale 0.5 circle))
+  (move 0 -2 line))@
+  (let greenFace ~(set
+    (move -2 2 (scale 0.1 line))
+    (move 2 2 (scale 0.1 line))
+    (move 0 -2 line))~
+      (set cyanFace greenFace)))
+    \end{nanoml}
+    \subcaption{Two faces in the graphical DSL}\label{fig:1a}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \includegraphics[width=.75\linewidth]{bruh}
+    \subcaption{The graphical representation of the faces}\label{fig:1b}
+  \end{minipage}
+  \vspace{2em}
+  \caption{An example anti-unification problem}\label{fig:1}
+  \vspace{0.5em}
+\end{figure}
+
+Both of the drawings are smiley faces, so the goal is to extract out a common function which represents a smiley face and use that function for both the cyan and green faces. In particular, we want to anti-unify these two expressions such that the common function parameterizes over the size and shape of the right eye, as shown in figure \ref{fig:2}. Note that an example like this would have been impossible to anti-unify with the approach from the smiley face paper, as it is only capable of parameterizing over the shapes used in each drawing, and would require all of the translation and scaling parameters to match.
+
+\begin{figure}[h]
+  \begin{nanoml}[xleftmargin=.1\textwidth]
+(let f (\z. \s. (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale z s)) (move 0 -2 line)))
+  (let cyanFace @(f 0.5 circle)@
+    (let greenFace ~(f 0.1 line)~
+      (set cyanFace greenFace))))
+  \end{nanoml}
+  
+  \caption{Faces in the DSL, with an anti-unified function for constructing smileys}
+  \label{fig:2}
+\end{figure}
+
+Thus, the primary challenge of this work is devising a strategy for rewriting syntactically or structurally different programs such that they can be anti-unified.
+
+\section{Library learning with e-graph rewrites}
+
+To facilitate this, our approach uses an \textit{equivalence graph} and rewrites subexpressions within this equivalence graph to introduce and move functions. In practice, babble uses the egg library to do this in a performant manner. When given an input program, babble applies a set of rewrite rules to the program which introduces new functions, preserving program behavior, and rotates them up and down the AST (these rewrites can be thought of as ``inverse'' beta reductions). Like the DreamCoder paper, babble currently introduces these new functions indiscriminately, with no heuristics or guided search to introduce functions specifically amenable to anti-unification. babble also contains rewrite rules which extracts out a common function into its own let-binding if it is being applied in both programs. Then, after the e-graph has hit a maximum size or time limit, babble selects the expression in the e-graph which uses the fewest number of primitives (e.g. \T{scale}, \T{move}, \T{circle}, \T{line}, etc.)
+
+To show how this technique would work in practice, we provide an abridged demonstration of how babble would learn a common face function from the example in figure \ref{fig:1}. First, babble can replace any subexpression with an application to the identity function, using the corresponding subexpressions as the argument; this rewrite allows for the introduction of functions which parameterize over an arbitrary part of the expression. Introducing these functions yields the following:
+
+\begin{figure}[h]
+  \begin{nanoml}
+(let cyanFace (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale @((\z. z) 0.5)@ ~((\s. s) circle)~)) (move 0 -2 line))
+  (let greenFace (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale @((\z. z) 0.1)@ ~((\s. s) line)~)) (move 0 -2 line))
+      (set cyanFace greenFace)))
+  \end{nanoml}
+
+  \label{fig:au1}
+  \vspace{0.5em}
+\end{figure}
+
+Additionally, babble also contains rewrites which can rotate these functions outwards, allowing babble to move the function abstraction to the top level of each drawing expression. Rotating these functions upwards yields the following:
+  
+\begin{figure}[h]
+  \begin{nanoml}
+(let cyanFace ((\z. ((\s. (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale z s)) (move 0 -2 line))) circle)) 0.5)
+  (let greenFace ((\z. ((\s. (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale z s)) (move 0 -2 line))) line)) 0.1)
+      (set cyanFace greenFace)))
+  \end{nanoml}
+
+  \label{fig:au2}
+\end{figure}
+
+babble can then rotate the function abstractions and abstractions such that they are adjacent with each other, like so:
+
+\begin{figure}[h]
+  \begin{nanoml}
+(let cyanFace ((\z. \s. (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale z s)) (move 0 -2 line))) 0.5 circle)
+  (let greenFace ((\z. \s. (set (move -2 2 (scale 0.1 line)) (move 2 2 (scale z s)) (move 0 -2 line))) 0.1 line)
+      (set cyanFace greenFace)))
+  \end{nanoml}
+
+  \label{fig:au3}
+\end{figure}
+
+\section{Evaluation}
+
+In order to evaluate the effectiveness of babble, we tested several simple anti-unification tasks, along with a task taken from the smiley paper, and compared the output of babble to the desired anti-unified output. For completeness, these benchmarks and the desired/actual outputs are reproduced in appendix \ref{appendix:benches}.
+
+\begin{figure}[h!]
+  \begin{tabular}{@{}lcr@{}}
+    \toprule
+    Benchmark & Correct output & Time (s) \\
+    \midrule
+    Shape parameter & \cmark & 0.113 \\
+    Rotate parameter & \cmark & 0.128 \\
+    Shape \& rotate parameters & \cmark & 0.119 \\
+    Two composed, scale \& xy translate parameters & \cmark & 0.116 \\
+    Two composed, scale \& x translate parameters & \cmark & 0.125 \\
+    Wang et al. example & \xmark & 0.116 \\
+    \bottomrule
+    \abovetopsep
+  \end{tabular}
+
+  \caption{A table of benchmark results.}
+  \label{fig:3}
+\end{figure}
+
+For the most part, babble was able to produce correct solutions for simple examples relatively efficiently, but quickly stumbles for more complex inputs. We also observed unexpected behavior in some cases. First, the speed of these results can be misleading, as egg has a time limit on how long an e-graph will be explored for; by default, this limit is set at around a tenth of a second; since babble can rewrite any subexpression to introduce a function an indefinite number of times, the e-graph will never reach saturation, and the time taken will always be equal to the time limit given to the tool. However, when testing the final benchmark, increasing the time limit to as much as 30 seconds had no effect on the correctness of the output. Finally, during testing, we found that manually introducing and rotating some functions in the input (i.e. introducing ``manual rewrites'' to the input) allowed previously failing test cases to pass. This seems to indicate that although the concept is sound, it is also fragile, and the success of the process is highly dependent on how rewrites are scheduled and how the program search space is explored.
+
+\section{Future work}
+
+As demonstrated, although the proof-of-concept works for relatively simple examples, it struggles with expressions of larger complexity. Additionally, even in the cases when the tool returns the desired results, the tool currently suffers from several other key limitations:
+
+\begin{itemize}
+\item Only two different programs can be anti-unified.
+\item Only one common auxiliary function can be extracted between these two programs.
+\item Dealing with variable capture is currently unimplemented, which limits the complexity of the generated auxiliary functions.
+\end{itemize}
+
+However, despite these limitations, the performance of the tool on the simple benchmarks above seems to indicate that the proof-of-concept is sound. There are also several other improvements beyond addressing these limitations which can make the system more robust for complex examples:
+
+\paragraph{More guided search.} At the moment, babble uses a naive rewrite rule scheduling strategy provided by the egg library which, on every iteration, simply fires every rule once for each subexpression it matches. Rather than this naive approach, we propose adding a more intelligent rewrite scheduler that schedules rewrites such that the output is more conducive to anti-unification.
+
+\paragraph{More domain-specific rewrites.} Because this tool targets a graphical DSL, it can take advantage of special properties like symmetries. For instance, a circle can be rotated any amount, and it will still be the same circle. The same can be said for a line segment, which looks the same as when it is rotated 180 degrees. Thus, we propose new rewrite rules which can take these symmetries into account and reveal further anti-unification opportunities.
+
+Combined, these additions to babble could make it a performant and capable library learning solution.
+
+\appendix
+\section{Benchmark programs}
+\label{appendix:benches}
+
+\subsection{Shape parameter}
+
+\ % for spacing
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=.1\textwidth]
+(let s1 (rotate 50 (move 2 4 (scale 3 circle)))
+  (let s2 (rotate 50 (move 2 4 (scale 3 line)))
+    (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=0.05\textwidth]
+(let f (\c. (rotate 50 (move 2 4 (scale 3 c))))
+  (let s1 (f circle)
+    (let s2 (f line)
+      (set s1 s2))))
+    \end{nanoml}
+    \subcaption{Expected and actual output}
+  \end{minipage}
+\end{figure}
+
+\subsection{Rotate parameter}
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=.1\textwidth]
+(let s1 (rotate 50 (move 2 4 (scale 3 line)))
+  (let s2 (rotate 100 (move 2 4 (scale 3 line)))
+    (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=.05\textwidth]
+(let f (\r. (rotate r (move 2 4 (scale 3 line))))
+  (let s1 (f 50)
+    (let s2 (f 100)
+      (set s1 s2))))
+    \end{nanoml}
+    \subcaption{Expected and actual output}
+  \end{minipage}
+\end{figure}
+
+\subsection{Shape \& rotate parameter}
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=.1\textwidth]
+(let s1 (rotate 50 (move 2 4 (scale 3 line)))
+  (let s2 (rotate 100 (move 2 4 (scale 3 circle)))
+    (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=.05\textwidth]
+(let f (\s r. (rotate r (move 2 4 (scale 3 s))))
+  (let s1 (f line 50)
+    (let s2 (f circle 100)
+      (set s1 s2))))
+    \end{nanoml}
+    \subcaption{Expected and actual output}
+  \end{minipage}
+\end{figure}
+
+\subsection{Two composed, scale \& xy translate parameters}
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=0]
+(let s1 (set (scale 9 circle) (move 3 3 (scale 2 circle)))
+  (let s2 (set (scale 3 circle) (move 1 1 (scale 2 circle)))
+    (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=.1\linewidth]
+-- The order of the two circles is reversed in
+-- the output. This has no effect on evaluation
+(let f (\xy. \z. (set
+  (move xy xy (scale 2 circle)) (scale z circle)))
+  (let s1 (f 9 3)
+    (let s2 (f 3 1)
+      (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Expected and actual output}
+  \end{minipage}
+\end{figure}
+
+\subsection{Two composed, scale \& x translate parameters}
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=0]
+(let s1 (set (scale 6 circle) (move 0 0 line))
+  (let s2 (set (scale 4 circle) (move 2 0 line))
+    (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=.1\linewidth]
+(let f (\z. \x. (set (move x 0 line) (scale z circle)))
+  (let s1 (f 6 0)
+    (let s2 (f 4 2)
+      (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Expected and actual output}
+  \end{minipage}
+\end{figure}
+
+\subsection{Wang et al. example}
+
+\ % spacing
+
+\begin{figure}[h!]
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    
+    \begin{nanoml}[xleftmargin=0]
+(let s1 (set
+  (move 4 4 (scale 2 line))
+  (move 3 2 line)
+  (move 4 3 (scale 9 circle))
+  (move 5 2 line))
+  (let s2 (set
+    (move 4 4 (scale 2 circle))
+    (move 3 2 circle)
+    (move 4 3 (scale 9 circle))
+    (move 5 2 circle))
+      (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Input \& actual output}
+  \end{minipage}%
+  \begin{minipage}[c]{.5\linewidth}
+    \centering
+    \begin{nanoml}[xleftmargin=.1\linewidth]
+-- The order of the two circles is reversed in
+-- the output. This has no effect on evaluation
+(let f (\s. (set
+  (move 4 4 (scale 2 s))
+  (move 3 2 s)
+  (move 4 3 (scale 9 circle))
+  (move 5 2 s)))
+  (let s1 (f line)
+    (let s2 (f circle)
+      (set s1 s2)))
+    \end{nanoml}
+    \subcaption{Expected output}
+  \end{minipage}
+\end{figure}
+
+\bibliography{refs}
+
+\end{document}

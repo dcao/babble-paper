@@ -1,0 +1,24 @@
+\usepackage{calc}
+\usepackage{ifthen}
+
+%lists, trees and functions
+\newcommand{\li}[2][XX]{%
+   \ifthenelse{\equal{#1}{XX}}%
+      {\ensuremath{L(#2)}}%
+            {\ensuremath{L^{#1}(#2)}}}
+
+\newlength{\rWidth}
+
+\newcommand{\fun}[3][XX]{%
+   \ifthenelse{\equal{#1}{XX}}%
+      {\ensuremath{#2 {\rightarrow} #3}}%
+      { \settowidth{\rWidth}{\ensuremath{#1}}%
+        \ensuremath{ #2\hspace{.1em} {\xrightarrow{\hspace{\rWidth}}\hspace{-1.1\rWidth}}^%
+         {#1}%{\BehindSubString{,}{#1} / \BeforeSubString{,}{#1}}%
+         \hspace{0.3\rWidth}\hspace{.1em} #3}}}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "resource-synthesis"
+%%% End:
